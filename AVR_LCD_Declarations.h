@@ -18,5 +18,7 @@ void LCD_Initialize();
 void LCD_Command(char cmd);
 void LCD_Out(unsigned char value);
 void LCD_Print(char * str);
+void LCD_Print_xy(char row, char pos, char * str);
+void LCD_Clear();
 
 #endif /* AVR_LCD_DECLARATIONS_H_ */
