@@ -160,3 +160,24 @@ void LCD_Print(char * str) //char*str = "Hello", str (pointer) can access this a
 		i++;
 	}
 }
+
+void LCD_Print_xy(char row, char pos, char * str) //(print at xy position), x is the row, y is the pos(column)
+{
+	if((row == 0) && (pos < 16))
+	{
+		LCD_Command( (pos & 0x0F) | (0x80) ); //0x80 force cursor to start from the 1st line
+	}
+	else if((row == 1) && (pos < 16))
+	{
+		LCD_Command( (pos & 0x0F) | (0xC0) ); //0xC0 force cursor to start from the 2nd line
+	}
+	
+	LCD_Print(str); //Print the string by calling the LCD_Print function
+}
+
+void LCD_Clear()
+{
+	LCD_Command(0x01); //Clear display screen
+	_delay_ms(2);
+	LCD_Command( (0 & 0x0F) | (0x80) ); //Cursor at 00 position
+}
