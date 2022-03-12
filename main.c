@@ -25,7 +25,7 @@ int main(void)
 		{
 			Pin_Set(C, 6);
 			Pin_Reset(C, 7);
-			LCD_Print("R+ ");
+			LCD_Print_xy(0, 0, "R+ ");
 			_delay_ms(10);
 		
 		while( ACSR & (1<<ACO) ) ; //stay here until comparator status is changed
@@ -34,7 +34,7 @@ int main(void)
 		{
 			Pin_Set(C, 7);
 			Pin_Reset(C, 6);
-			LCD_Print("R- ");
+			LCD_Print_xy(0, 0, "R- ");
 			_delay_ms(10);
 			
 		while( !(ACSR & (1<<ACO)) ) ; //stay here until comparator status is changed
